@@ -35,7 +35,15 @@ class Tracking extends Component {
 
     _handlePress() {
      console.log('Pressed!');
-     fetch('http://nolan-stg.nuvoex.com:80/api/shipment/track?awb[]='+this.state.shipment_id)
+
+     var obj = {
+  method: 'GET',
+  headers: {
+    'Accept': 'application/vnd.jackson.v1',
+    'Content-Type': 'application/json'
+  }};
+
+     fetch('http://nolan-stg.nuvoex.com:80/api/shipment/track?awb[]='+this.state.shipment_id,obj)
      .then((response) => response.json())
      .then((responseJson) => {
        this.setState({
