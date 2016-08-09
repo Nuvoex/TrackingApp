@@ -155,6 +155,7 @@ class Tracking extends Component {
      <View style={{flex:1}}>
        <ToolbarAndroid
          style={styles.toolbar}
+         titleColor={"#ffffff"}
          title="Track Shipment" />
          <ScrollView>
            <View style={{flex:1}}>
@@ -167,6 +168,6 @@ class Tracking extends Component {
   }
 }
 
-var styles = StyleSheet.create({ toolbar: { backgroundColor: '#e9eaed', height: 56, }, });
+var styles = StyleSheet.create({ toolbar: { backgroundColor: '#0f303e', height: 56, }, });
 
 AppRegistry.registerComponent('infinity', () => Tracking);
