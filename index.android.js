@@ -93,7 +93,7 @@ class Tracking extends Component {
       banner = (
         <View>
 
-          <View style={theme.cardStyle}>
+          <View>
             <Text>Awb {this.state.awb}</Text>
             <Text>Client {this.state.client_name}</Text>
             <Text>Origin {this.state.origin_city}</Text>
@@ -104,9 +104,10 @@ class Tracking extends Component {
           </View>
           <Text>History:</Text>
           <ListView
+            pageSize={10}
             dataSource={this.state.dataSource}
             renderRow={(rowData) =>
-              <View>
+              <View style={{padding:8}}>
                 <Text>{rowData.description}</Text>
                 <Text>{rowData.location}</Text>
                 <Text>{rowData.updated_at}</Text>
