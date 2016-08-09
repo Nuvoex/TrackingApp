@@ -12,10 +12,15 @@ import {
   ScrollView,
   TextInput,
   ListView,
-  View
+  View,
+  ToolbarAndroid,
 } from 'react-native';
 import Button from 'react-native-button';
-var ToolbarAndroid = require('ToolbarAndroid');
+import * as Progress from 'react-native-progress';
+
+//var ProgressBar = require('react-native-progress-bar');
+
+
 const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
 
 
@@ -25,6 +30,7 @@ class Tracking extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
+      loading: false,
       shipment_id: ' ',
       client_name: ' ',
       origin_city: ' ',
@@ -32,12 +38,15 @@ class Tracking extends Component {
       location: ' ',
       updated_at: ' ',
       description: ' ',
-      history: ' ',
       dataSource: ds.cloneWithRows([' ']),
+      progress: 0
     };
   }
 
     _handlePress() {
+      this.setState ({
+        loading: true
+      });
      console.log('Pressed!');
 
      var obj = {
@@ -51,6 +60,7 @@ class Tracking extends Component {
      .then((response) => response.json())
      .then((responseJson) => {
        this.setState({
+         loading: false,
          awb: responseJson[0].awb,
          client_name: responseJson[0].client_name,
          origin_city: responseJson[0].origin_city,
@@ -69,10 +79,14 @@ class Tracking extends Component {
 
   render() {
 
+
+
     var banner;
     if (this.state.status){
       banner = (
         <View>
+
+
           <Text>awb = {this.state.awb}</Text>
           <Text>client_name = {this.state.client_name}</Text>
           <Text>origin_city = {this.state.origin_city}</Text>
@@ -81,9 +95,16 @@ class Tracking extends Component {
           <Text>location = {this.state.location}</Text>
           <Text>updated_at = {this.state.updated_at}</Text>
           <Text>description = {this.state.description}</Text>
+          <Text>History:</Text>
           <ListView
             dataSource={this.state.dataSource}
-            renderRow={(rowData) => <Text>{rowData.location}</Text>}
+            renderRow={(rowData) =>
+              <View>
+                <Text>{rowData.description}</Text>
+                <Text>{rowData.location}</Text>
+                <Text>{rowData.updated_at}</Text>
+              </View>
+            }
           />
         </View>
       )
@@ -95,25 +116,43 @@ class Tracking extends Component {
         )
     }
 
+    var content;
+    if (this.state.loading === false) {
+      content = (
+        <View>
+          <ToolbarAndroid
+            style={styles.toolbar}
+            title="TRACKING SHIPMENT" />
+            <View style={{flex:1, padding:16}}>
+              <Text style={{color:'blue',fontSize:20}}> Shipment ID </Text>
+              <TextInput placeholder="Type here" onChangeText={(shipment_id) => this.setState({shipment_id})} />
+              <Button
+                style={{color:'green'}}
+                onPress={() => this._handlePress()}>
+                Search
+              </Button>
+              {banner}
+          </View>
+        </View>
+      )
+    } else {
+      content =(
+        <View style={{alignItems: 'center'}}>
+          <Progress.CircleSnail colors={['red', 'green', 'blue']} />
+        </View>
+      )
+    }
+
     return (
       <ScrollView>
-        <View style={{flex:1, padding:22}}>
-          <ToolbarAndroid
-            title="TRACKING SHIPMENT" />
-
-          <Text style={{color:'blue',fontSize:20}}> Shipment ID </Text>
-          <TextInput placeholder="Type here" onChangeText={(shipment_id) => this.setState({shipment_id})} />
-          <Button
-            style={{color:'green'}}
-            onPress={() => this._handlePress()}>
-            Search
-          </Button>
-          {banner}
-
+        <View style={{flex:1}}>
+          {content}
         </View>
       </ScrollView>
     );
   }
 }
+
+var styles = StyleSheet.create({ toolbar: { backgroundColor: '#e9eaed', height: 56, }, });
 
 AppRegistry.registerComponent('infinity', () => Tracking);
