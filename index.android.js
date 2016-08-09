@@ -20,7 +20,10 @@ import * as Progress from 'react-native-progress';
 
 import {
   MKButton,
+  getTheme,
 } from 'react-native-material-kit';
+
+const theme = getTheme();
 
 //var ProgressBar = require('react-native-progress-bar');
 
@@ -115,7 +118,7 @@ class Tracking extends Component {
     } else if(this.state.awb){
         banner = (
           <View>
-           <Text>Shipment not found</Text>
+            <Text style={{color: '#F00', padding:16}}>Shipment {this.state.awb} not found</Text>
           </View>
         )
     }
