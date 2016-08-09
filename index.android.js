@@ -93,15 +93,15 @@ class Tracking extends Component {
       banner = (
         <View>
 
-
-          <Text>awb = {this.state.awb}</Text>
-          <Text>client_name = {this.state.client_name}</Text>
-          <Text>origin_city = {this.state.origin_city}</Text>
-          <Text>destination_city = {this.state.destination_city}</Text>
-          <Text>status = {this.state.status}</Text>
-          <Text>location = {this.state.location}</Text>
-          <Text>updated_at = {this.state.updated_at}</Text>
-          <Text>description = {this.state.description}</Text>
+          <View style={theme.cardStyle}>
+            <Text>Awb {this.state.awb}</Text>
+            <Text>Client {this.state.client_name}</Text>
+            <Text>Origin {this.state.origin_city}</Text>
+            <Text>Destination {this.state.destination_city}</Text>
+            <Text>Location {this.state.location}</Text>
+            <Text>Updated At {this.state.updated_at}</Text>
+            <Text>Description {this.state.description}</Text>
+          </View>
           <Text>History:</Text>
           <ListView
             dataSource={this.state.dataSource}
