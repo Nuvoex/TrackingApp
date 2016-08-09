@@ -104,7 +104,6 @@ class Tracking extends Component {
           </View>
           <Text>History:</Text>
           <ListView
-            pageSize={10}
             dataSource={this.state.dataSource}
             renderRow={(rowData) =>
               <View style={{padding:8}}>
@@ -137,9 +136,6 @@ class Tracking extends Component {
 
       content = (
         <View>
-          <ToolbarAndroid
-            style={styles.toolbar}
-            title="TRACKING SHIPMENT" />
             <View style={{flex:1, padding:16}}>
               <TextInput keyboardType="numeric" placeholder="Enter Shipment ID" onChangeText={(shipment_id) => this.setState({shipment_id})} />
               <ColoredRaisedButton />
@@ -156,11 +152,17 @@ class Tracking extends Component {
     }
 
     return (
-      <ScrollView>
-        <View style={{flex:1}}>
-          {content}
-        </View>
-      </ScrollView>
+     <View style={{flex:1}}>
+       <ToolbarAndroid
+         style={styles.toolbar}
+         title="Track Shipment" />
+         <ScrollView>
+           <View style={{flex:1}}>
+             {content}
+           </View>
+         </ScrollView>
+    </View>
+
     );
   }
 }
