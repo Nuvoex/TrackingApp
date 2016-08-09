@@ -18,6 +18,10 @@ import {
 import Button from 'react-native-button';
 import * as Progress from 'react-native-progress';
 
+import {
+  MKButton,
+} from 'react-native-material-kit';
+
 //var ProgressBar = require('react-native-progress-bar');
 
 
@@ -118,6 +122,15 @@ class Tracking extends Component {
 
     var content;
     if (this.state.loading === false) {
+
+      const ColoredRaisedButton = MKButton.coloredButton()
+        .withText('Search')
+        .withOnPress(() => {
+          console.log("Hi, it's a colored button!");
+          this._handlePress();
+        })
+        .build();
+
       content = (
         <View>
           <ToolbarAndroid
@@ -126,11 +139,7 @@ class Tracking extends Component {
             <View style={{flex:1, padding:16}}>
               <Text style={{color:'blue',fontSize:20}}> Shipment ID </Text>
               <TextInput placeholder="Type here" onChangeText={(shipment_id) => this.setState({shipment_id})} />
-              <Button
-                style={{color:'green'}}
-                onPress={() => this._handlePress()}>
-                Search
-              </Button>
+              <ColoredRaisedButton />
               {banner}
           </View>
         </View>
