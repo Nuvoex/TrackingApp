@@ -137,8 +137,7 @@ class Tracking extends Component {
             style={styles.toolbar}
             title="TRACKING SHIPMENT" />
             <View style={{flex:1, padding:16}}>
-              <Text style={{color:'blue',fontSize:20}}> Shipment ID </Text>
-              <TextInput placeholder="Type here" onChangeText={(shipment_id) => this.setState({shipment_id})} />
+              <TextInput keyboardType="numeric" placeholder="Enter Shipment ID" onChangeText={(shipment_id) => this.setState({shipment_id})} />
               <ColoredRaisedButton />
               {banner}
           </View>
