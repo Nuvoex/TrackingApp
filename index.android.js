@@ -15,11 +15,14 @@ import {
   View
 } from 'react-native';
 import Button from 'react-native-button';
+var ToolbarAndroid = require('ToolbarAndroid');
+const ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+
 
 class Tracking extends Component {
 
+
   constructor(props, context) {
-    //var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
     super(props, context);
     this.state = {
       shipment_id: ' ',
@@ -30,7 +33,7 @@ class Tracking extends Component {
       updated_at: ' ',
       description: ' ',
       history: ' ',
-      //history: ds.cloneWithRows([' ']),
+      dataSource: ds.cloneWithRows([' ']),
     };
   }
 
@@ -56,7 +59,7 @@ class Tracking extends Component {
          location: responseJson[0].location,
          updated_at: responseJson[0].updated_at,
          description: responseJson[0].description,
-         history: responseJson[0].history,
+         dataSource: ds.cloneWithRows(responseJson[0].history),
        });
       //this.setState({showText: 'aaa'});
       //console.log('responce '+ responseJson[0].client_name);
@@ -78,6 +81,10 @@ class Tracking extends Component {
           <Text>location = {this.state.location}</Text>
           <Text>updated_at = {this.state.updated_at}</Text>
           <Text>description = {this.state.description}</Text>
+          <ListView
+            dataSource={this.state.dataSource}
+            renderRow={(rowData) => <Text>{rowData.location}</Text>}
+          />
         </View>
       )
     } else if(this.state.awb){
@@ -90,8 +97,10 @@ class Tracking extends Component {
 
     return (
       <ScrollView>
-        <View style={{flex:1}}>
-          <Text style={{alignItems:'center', fontSize:50}}> Tracking Shipment </Text>
+        <View style={{flex:1, padding:22}}>
+          <ToolbarAndroid
+            title="TRACKING SHIPMENT" />
+
           <Text style={{color:'blue',fontSize:20}}> Shipment ID </Text>
           <TextInput placeholder="Type here" onChangeText={(shipment_id) => this.setState({shipment_id})} />
           <Button
@@ -100,6 +109,7 @@ class Tracking extends Component {
             Search
           </Button>
           {banner}
+
         </View>
       </ScrollView>
     );
