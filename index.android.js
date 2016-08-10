@@ -146,24 +146,31 @@ class Tracking extends Component {
           </View>
           </Card>
           <Text style={{marginLeft:8, marginTop:10, fontSize: 12, fontWeight: '500'}}>HISTORY</Text>
-          <Card >
+          <Card style={{paddingTop:8}}>
           <ListView
             dataSource={this.state.dataSource}
             renderRow={(rowData) =>
-              <View style={{paddingBottom:8,paddingTop:8}}>
-                  <View style={styles.feature}>
+            <View style={{flexDirection:'row'}}>
+                <View style={{flexDirection:'column'}}>
+                    <View style={styles.top_line}/>
+                    <View style={styles.circle}/>
+                    <View style={styles.line}/>
+                </View>
+                <View style={{flex:1,paddingLeft:8,paddingBottom:12}}>
+                  <View style={styles.history_item}>
                     <Text style={styles.label}>Description</Text>
                     <Text style={styles.bold}>{rowData.description}</Text>
                   </View>
-                  <View style={styles.feature}>
+                  <View style={styles.history_item}>
                     <Text style={styles.label}>Location</Text>
                     <Text style={styles.bold}>{rowData.location}</Text>
                   </View>
-                  <View style={styles.feature}>
+                  <View style={styles.history_item}>
                     <Text style={styles.label}>Updated At</Text>
                     <Text style={styles.bold}>{rowData.updated_at}</Text>
                   </View>
-              </View>
+                </View>
+            </View>
             }
           />
           </Card>
@@ -233,8 +240,12 @@ class Tracking extends Component {
 var styles = StyleSheet.create({
   toolbar: { backgroundColor: '#0f303e', height: 56, },
   feature: {flexDirection: 'row',paddingBottom:8,},
+  history_item: {flexDirection: 'row',paddingBottom:4,},
   bold: {flex:0.7,},
   label:{flex:0.3,fontWeight: 'bold',},
+  circle:{width:10,height:10,borderRadius:5,backgroundColor:'green'},
+  line:{backgroundColor:'red',width:2,flex:1,marginLeft:3},
+  top_line:{backgroundColor:'red',width:2,height:5,marginLeft:3},
 });
 
 
