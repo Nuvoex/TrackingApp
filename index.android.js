@@ -18,12 +18,21 @@ import {
 import Button from 'react-native-button';
 import * as Progress from 'react-native-progress';
 
-import {
-  MKButton,
-  getTheme,
-} from 'react-native-material-kit';
 
-const theme = getTheme();
+
+
+
+const MK = require('react-native-material-kit');
+
+const {
+  MKButton,
+  MKColor,
+} = MK;
+
+MK.setTheme({
+    primaryColor: MKColor.Green,
+    accentColor: MKColor.Purple,
+});
 
 //var ProgressBar = require('react-native-progress-bar');
 
@@ -46,7 +55,7 @@ class Tracking extends Component {
       updated_at: ' ',
       description: ' ',
       dataSource: ds.cloneWithRows([' ']),
-      progress: 0
+      progress: 0,
     };
   }
 
@@ -66,6 +75,7 @@ class Tracking extends Component {
      fetch('http://nolan.nuvoex.com:80/api/shipment/track?awb[]='+this.state.shipment_id,obj)
      .then((response) => response.json())
      .then((responseJson) => {
+      console.log("request successful");
        this.setState({
          loading: false,
          awb: responseJson[0].awb,
@@ -77,11 +87,19 @@ class Tracking extends Component {
          updated_at: responseJson[0].updated_at,
          description: responseJson[0].description,
          dataSource: ds.cloneWithRows(responseJson[0].history),
+        //  network_error_message:null,
        });
       //this.setState({showText: 'aaa'});
       //console.log('responce '+ responseJson[0].client_name);
      })
-     .catch((error) => { console.error(error); });
+     .catch((error) => {
+       console.log("request failed");
+       //console.error(error);
+       this.setState({
+         network_error_message: "Unable to Connect",
+         loading: false,
+       });
+     });
     }
 
   render() {
@@ -89,6 +107,7 @@ class Tracking extends Component {
 
 
     var banner;
+
     if (this.state.status){
       banner = (
         <View>
@@ -123,22 +142,28 @@ class Tracking extends Component {
               <Text style={styles.bold}>  {this.state.description}</Text>
             </View>
           </View>
-          <Text style={{marginTop:16, fontWeight: 'bold'}}>History:</Text>
+          <Text style={{marginTop:16, fontWeight: 'bold'}}>History</Text>
           <ListView
             dataSource={this.state.dataSource}
             renderRow={(rowData) =>
               <View style={{padding:8}}>
                 <Text style={{fontWeight: 'bold'}} >Description</Text>
-                <Text> {rowData.description}</Text>
+                <Text>{rowData.description}</Text>
                 <Text style={styles.bold}>Location</Text>
                 <Text>{rowData.location}</Text>
                 <Text style={styles.bold}>Updated At</Text>
-                <Text> {rowData.updated_at}</Text>
+                <Text>{rowData.updated_at}</Text>
               </View>
             }
           />
         </View>
       )
+    } else if(this.state.network_error_message){
+        banner = (
+          <View>
+            <Text style={{color: '#F00', padding:16}}>{this.state.network_error_message}</Text>
+          </View>
+        )
     } else if(this.state.awb){
         banner = (
           <View>
@@ -150,7 +175,9 @@ class Tracking extends Component {
     var content;
     if (this.state.loading === false) {
 
-      const ColoredRaisedButton = MKButton.coloredButton()
+
+
+      const ColoredRaisedButton = MKButton.coloredFlatButton()
         .withText('Search')
         .withOnPress(() => {
           console.log("Hi, it's a colored button!");
@@ -170,7 +197,7 @@ class Tracking extends Component {
     } else {
       content =(
         <View style={{alignItems: 'center'}}>
-          <Progress.CircleSnail colors={['red', 'green', 'blue']} />
+          <Progress.CircleSnail color={['green']} />
         </View>
       )
     }
@@ -197,5 +224,6 @@ var styles = StyleSheet.create({
   feature: {flexDirection: 'row'},
   bold: {fontWeight: 'bold'},
 });
+
 
 AppRegistry.registerComponent('infinity', () => Tracking);
