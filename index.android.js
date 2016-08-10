@@ -48,7 +48,7 @@ class Tracking extends Component {
     super(props, context);
     this.state = {
       loading: false,
-      shipment_id: ' ',
+      shipment_id: '1000585',
       client_name: ' ',
       origin_city: ' ',
       destination_city: ' ',
@@ -159,11 +159,12 @@ class Tracking extends Component {
             dataSource={this.state.dataSource}
             renderRow={(rowData) =>{
                 var topLineStyle;
-                if(rowData.position===0){
-                    topLineStyle=styles.blank_top_line;
-                }else{
-                    topLineStyle=styles.top_line;
-                }
+                topLineStyle=styles.blank_top_line;
+                // if(rowData.position===0){
+                //
+                // }else{
+                //     topLineStyle=styles.top_line;
+                // }
                 return (
                     <View style={{flexDirection:'row'}}>
                         <View style={{flexDirection:'column'}}>
@@ -259,10 +260,10 @@ var styles = StyleSheet.create({
   history_item: {flexDirection: 'row',paddingBottom:4,},
   bold: {flex:0.7,},
   label:{flex:0.3,fontWeight: 'bold',},
-  circle:{width:10,height:10,borderRadius:5,backgroundColor:'green'},
-  line:{backgroundColor:'red',width:2,flex:1,marginLeft:3},
-  top_line:{backgroundColor:'red',width:2,height:5,marginLeft:3},
-  blank_top_line:{backgroundColor:'white',width:2,height:5,marginLeft:3},
+  circle:{width:10,height:10,borderRadius:5,backgroundColor:'transparent',borderColor:'grey',borderWidth:2},
+  line:{backgroundColor:'grey',width:1,flex:1,marginLeft:4,marginTop:4,marginBottom:4},
+  top_line:{backgroundColor:'grey',width:1,height:5,marginLeft:4},
+  blank_top_line:{backgroundColor:'white',width:1,height:5,marginLeft:4},
 });
 
 
