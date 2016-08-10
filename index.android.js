@@ -223,7 +223,13 @@ class Tracking extends Component {
       content = (
         <View>
             <View style={{flex:1}}>
-              <TextInput style={{margin:8}} keyboardType="numeric" placeholder="Enter Shipment ID" onChangeText={(shipment_id) => this.setState({shipment_id})} />
+              <TextInput
+                style={{margin:8}}
+                keyboardType="numeric"
+                placeholder="Enter Shipment ID"
+                onChangeText={(shipment_id) => this.setState({shipment_id})}
+                onSubmitEditing={(event) => this._handlePress()}
+              />
               <ColoredRaisedButton />
               {banner}
           </View>
