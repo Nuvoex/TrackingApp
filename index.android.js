@@ -77,6 +77,14 @@ class Tracking extends Component {
      .then((response) => response.json())
      .then((responseJson) => {
       console.log("request successful");
+      //;
+      var history=[];
+      for (var i = 0; i < responseJson[0].history.length; i++) {
+          history.push({
+              position:i,
+              data:responseJson[0].history[i],
+          });
+      }
        this.setState({
          loading: false,
          awb: responseJson[0].awb,
@@ -87,7 +95,7 @@ class Tracking extends Component {
          location: responseJson[0].location,
          updated_at: responseJson[0].updated_at,
          description: responseJson[0].description,
-         dataSource: ds.cloneWithRows(responseJson[0].history),
+         dataSource: ds.cloneWithRows(history),
         //  network_error_message:null,
        });
       //this.setState({showText: 'aaa'});
@@ -149,29 +157,37 @@ class Tracking extends Component {
           <Card style={{paddingTop:8}}>
           <ListView
             dataSource={this.state.dataSource}
-            renderRow={(rowData) =>
-            <View style={{flexDirection:'row'}}>
-                <View style={{flexDirection:'column'}}>
-                    <View style={styles.top_line}/>
-                    <View style={styles.circle}/>
-                    <View style={styles.line}/>
-                </View>
-                <View style={{flex:1,paddingLeft:8,paddingBottom:12}}>
-                  <View style={styles.history_item}>
-                    <Text style={styles.label}>Description</Text>
-                    <Text style={styles.bold}>{rowData.description}</Text>
+            renderRow={(rowData) =>{
+                var topLineStyle;
+                if(rowData.position===0){
+                    topLineStyle=styles.blank_top_line;
+                }else{
+                    topLineStyle=styles.top_line;
+                }
+                return (
+                    <View style={{flexDirection:'row'}}>
+                        <View style={{flexDirection:'column'}}>
+                            <View style={topLineStyle}/>
+                            <View style={styles.circle}/>
+                            <View style={styles.line}/>
+                        </View>
+                        <View style={{flex:1,paddingLeft:8,paddingBottom:12}}>
+                          <View style={styles.history_item}>
+                            <Text style={styles.label}>Description</Text>
+                            <Text style={styles.bold}>{rowData.data.description}</Text>
+                          </View>
+                          <View style={styles.history_item}>
+                            <Text style={styles.label}>Location</Text>
+                            <Text style={styles.bold}>{rowData.data.location}</Text>
+                          </View>
+                          <View style={styles.history_item}>
+                            <Text style={styles.label}>Updated At</Text>
+                            <Text style={styles.bold}>{rowData.data.updated_at}</Text>
+                          </View>
+                        </View>
                   </View>
-                  <View style={styles.history_item}>
-                    <Text style={styles.label}>Location</Text>
-                    <Text style={styles.bold}>{rowData.location}</Text>
-                  </View>
-                  <View style={styles.history_item}>
-                    <Text style={styles.label}>Updated At</Text>
-                    <Text style={styles.bold}>{rowData.updated_at}</Text>
-                  </View>
-                </View>
-            </View>
-            }
+                );
+            }}
           />
           </Card>
         </View>
@@ -246,6 +262,7 @@ var styles = StyleSheet.create({
   circle:{width:10,height:10,borderRadius:5,backgroundColor:'green'},
   line:{backgroundColor:'red',width:2,flex:1,marginLeft:3},
   top_line:{backgroundColor:'red',width:2,height:5,marginLeft:3},
+  blank_top_line:{backgroundColor:'white',width:2,height:5,marginLeft:3},
 });
 
 
