@@ -114,6 +114,10 @@ class Tracking extends Component {
 
           <View style={{marginTop:16}}>
             <View style={styles.feature}>
+              <Text style={styles.label}>Reached At</Text>
+              <Text style={styles.bold}>{this.state.location}</Text>
+            </View>
+            <View style={styles.feature}>
               <Text style={styles.label}>Awb</Text>
               <Text style={styles.bold}>{this.state.awb}</Text>
             </View>
@@ -129,10 +133,7 @@ class Tracking extends Component {
               <Text style={styles.label}>Destination</Text>
               <Text style={styles.bold}>{this.state.destination_city}</Text>
             </View>
-            <View style={styles.feature}>
-              <Text style={styles.label}>Location</Text>
-              <Text style={styles.bold}>{this.state.location}</Text>
-            </View>
+            
             <View style={styles.feature}>
               <Text style={styles.label}>Updated At</Text>
               <Text style={styles.bold}>{this.state.updated_at}</Text>
