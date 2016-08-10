@@ -261,7 +261,7 @@ var styles = StyleSheet.create({
   bold: {flex:0.7,},
   label:{flex:0.3,fontWeight: 'bold',},
   circle:{width:10,height:10,borderRadius:5,backgroundColor:'transparent',borderColor:'grey',borderWidth:2},
-  line:{backgroundColor:'grey',width:1,flex:1,marginLeft:4,marginTop:4,marginBottom:4},
+  line:{backgroundColor:'grey',width:1,flex:1,marginLeft:4,marginTop:7,marginBottom:4},
   top_line:{backgroundColor:'grey',width:1,height:5,marginLeft:4},
   blank_top_line:{backgroundColor:'white',width:1,height:5,marginLeft:4},
 });
