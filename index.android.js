@@ -146,17 +146,23 @@ class Tracking extends Component {
           </View>
           </Card>
           <Text style={{marginLeft:8, marginTop:10, fontSize: 12, fontWeight: '500'}}>HISTORY</Text>
-          <Card>
+          <Card >
           <ListView
             dataSource={this.state.dataSource}
             renderRow={(rowData) =>
               <View style={{paddingBottom:8,paddingTop:8}}>
-                <Text style={{fontWeight: 'bold'}} >Description</Text>
-                <Text>{rowData.description}</Text>
-                <Text style={styles.bold}>Location</Text>
-                <Text>{rowData.location}</Text>
-                <Text style={styles.bold}>Updated At</Text>
-                <Text>{rowData.updated_at}</Text>
+                  <View style={styles.feature}>
+                    <Text style={styles.label}>Description</Text>
+                    <Text style={styles.bold}>{rowData.description}</Text>
+                  </View>
+                  <View style={styles.feature}>
+                    <Text style={styles.label}>Location</Text>
+                    <Text style={styles.bold}>{rowData.location}</Text>
+                  </View>
+                  <View style={styles.feature}>
+                    <Text style={styles.label}>Updated At</Text>
+                    <Text style={styles.bold}>{rowData.updated_at}</Text>
+                  </View>
               </View>
             }
           />
@@ -227,8 +233,8 @@ class Tracking extends Component {
 var styles = StyleSheet.create({
   toolbar: { backgroundColor: '#0f303e', height: 56, },
   feature: {flexDirection: 'row',paddingBottom:8,},
-  bold: {fontWeight: 'bold',flex:0.7},
-  label:{flex:0.3,},
+  bold: {flex:0.7,},
+  label:{flex:0.3,fontWeight: 'bold',},
 });
 
 
