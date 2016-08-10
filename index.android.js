@@ -114,32 +114,32 @@ class Tracking extends Component {
 
           <View style={{marginTop:16}}>
             <View style={styles.feature}>
-              <Text>Awb    </Text>
-              <Text style={styles.bold}> {this.state.awb}</Text>
+              <Text style={styles.label}>Awb</Text>
+              <Text style={styles.bold}>{this.state.awb}</Text>
             </View>
             <View style={styles.feature}>
-              <Text>Client  </Text>
-              <Text style={styles.bold}>  {this.state.client_name}</Text>
+              <Text style={styles.label}>Client</Text>
+              <Text style={styles.bold}>{this.state.client_name}</Text>
             </View>
             <View style={styles.feature}>
-              <Text>Origin    </Text>
-              <Text style={styles.bold}>  {this.state.origin_city}</Text>
+              <Text style={styles.label}>Origin</Text>
+              <Text style={styles.bold}>{this.state.origin_city}</Text>
             </View>
             <View style={styles.feature}>
-              <Text>Destination  </Text>
+              <Text style={styles.label}>Destination</Text>
               <Text style={styles.bold}>{this.state.destination_city}</Text>
             </View>
             <View style={styles.feature}>
-              <Text>Location  </Text>
-              <Text style={styles.bold}>  {this.state.location}</Text>
+              <Text style={styles.label}>Location</Text>
+              <Text style={styles.bold}>{this.state.location}</Text>
             </View>
             <View style={styles.feature}>
-              <Text>Updated At  </Text>
-              <Text style={styles.bold}>  {this.state.updated_at}</Text>
+              <Text style={styles.label}>Updated At</Text>
+              <Text style={styles.bold}>{this.state.updated_at}</Text>
             </View>
             <View style={styles.feature}>
-              <Text>Description </Text>
-              <Text style={styles.bold}>  {this.state.description}</Text>
+              <Text style={styles.label}>Description</Text>
+              <Text style={styles.bold}>{this.state.description}</Text>
             </View>
           </View>
           <Text style={{marginTop:16, fontWeight: 'bold'}}>History</Text>
@@ -222,7 +222,8 @@ class Tracking extends Component {
 var styles = StyleSheet.create({
   toolbar: { backgroundColor: '#0f303e', height: 56, },
   feature: {flexDirection: 'row'},
-  bold: {fontWeight: 'bold'},
+  bold: {fontWeight: 'bold',flex:0.7},
+  label:{flex:0.3,},
 });
 
 
