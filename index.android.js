@@ -93,23 +93,47 @@ class Tracking extends Component {
       banner = (
         <View>
 
-          <View>
-            <Text>Awb {this.state.awb}</Text>
-            <Text>Client {this.state.client_name}</Text>
-            <Text>Origin {this.state.origin_city}</Text>
-            <Text>Destination {this.state.destination_city}</Text>
-            <Text>Location {this.state.location}</Text>
-            <Text>Updated At {this.state.updated_at}</Text>
-            <Text>Description {this.state.description}</Text>
+          <View style={{marginTop:16}}>
+            <View style={styles.feature}>
+              <Text>Awb    </Text>
+              <Text style={styles.bold}> {this.state.awb}</Text>
+            </View>
+            <View style={styles.feature}>
+              <Text>Client  </Text>
+              <Text style={styles.bold}>  {this.state.client_name}</Text>
+            </View>
+            <View style={styles.feature}>
+              <Text>Origin    </Text>
+              <Text style={styles.bold}>  {this.state.origin_city}</Text>
+            </View>
+            <View style={styles.feature}>
+              <Text>Destination  </Text>
+              <Text style={styles.bold}>{this.state.destination_city}</Text>
+            </View>
+            <View style={styles.feature}>
+              <Text>Location  </Text>
+              <Text style={styles.bold}>  {this.state.location}</Text>
+            </View>
+            <View style={styles.feature}>
+              <Text>Updated At  </Text>
+              <Text style={styles.bold}>  {this.state.updated_at}</Text>
+            </View>
+            <View style={styles.feature}>
+              <Text>Description </Text>
+              <Text style={styles.bold}>  {this.state.description}</Text>
+            </View>
           </View>
-          <Text>History:</Text>
+          <Text style={{marginTop:16, fontWeight: 'bold'}}>History:</Text>
           <ListView
             dataSource={this.state.dataSource}
             renderRow={(rowData) =>
               <View style={{padding:8}}>
-                <Text>{rowData.description}</Text>
+                <Text style={{fontWeight: 'bold'}} >Description</Text>
+                <Text> {rowData.description}</Text>
+                <Text style={styles.bold}>Location</Text>
                 <Text>{rowData.location}</Text>
-                <Text>{rowData.updated_at}</Text>
+                <Text style={styles.bold}>Updated At</Text>
+                <Text> {rowData.updated_at}</Text>
               </View>
             }
           />
@@ -168,6 +192,10 @@ class Tracking extends Component {
   }
 }
 
-var styles = StyleSheet.create({ toolbar: { backgroundColor: '#0f303e', height: 56, }, });
+var styles = StyleSheet.create({
+  toolbar: { backgroundColor: '#0f303e', height: 56, },
+  feature: {flexDirection: 'row'},
+  bold: {fontWeight: 'bold'},
+});
 
 AppRegistry.registerComponent('infinity', () => Tracking);
