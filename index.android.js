@@ -15,6 +15,7 @@ import {
   View,
   ToolbarAndroid,
 } from 'react-native';
+import { Card } from 'react-native-material-design';
 import Button from 'react-native-button';
 import * as Progress from 'react-native-progress';
 
@@ -111,7 +112,7 @@ class Tracking extends Component {
     if (this.state.status){
       banner = (
         <View>
-
+        <Card>
           <View style={{marginTop:16}}>
             <View style={styles.feature}>
               <Text style={styles.label}>Reached At</Text>
@@ -133,7 +134,7 @@ class Tracking extends Component {
               <Text style={styles.label}>Destination</Text>
               <Text style={styles.bold}>{this.state.destination_city}</Text>
             </View>
-            
+
             <View style={styles.feature}>
               <Text style={styles.label}>Updated At</Text>
               <Text style={styles.bold}>{this.state.updated_at}</Text>
@@ -143,11 +144,13 @@ class Tracking extends Component {
               <Text style={styles.bold}>{this.state.description}</Text>
             </View>
           </View>
-          <Text style={{marginTop:16, fontWeight: 'bold'}}>History</Text>
+          </Card>
+          <Text style={{marginLeft:8, marginTop:10, fontSize: 12, fontWeight: '500'}}>HISTORY</Text>
+          <Card>
           <ListView
             dataSource={this.state.dataSource}
             renderRow={(rowData) =>
-              <View style={{padding:8}}>
+              <View style={{paddingBottom:8,paddingTop:8}}>
                 <Text style={{fontWeight: 'bold'}} >Description</Text>
                 <Text>{rowData.description}</Text>
                 <Text style={styles.bold}>Location</Text>
@@ -157,6 +160,7 @@ class Tracking extends Component {
               </View>
             }
           />
+          </Card>
         </View>
       )
     } else if(this.state.network_error_message){
@@ -188,8 +192,8 @@ class Tracking extends Component {
 
       content = (
         <View>
-            <View style={{flex:1, padding:16}}>
-              <TextInput keyboardType="numeric" placeholder="Enter Shipment ID" onChangeText={(shipment_id) => this.setState({shipment_id})} />
+            <View style={{flex:1}}>
+              <TextInput style={{margin:8}} keyboardType="numeric" placeholder="Enter Shipment ID" onChangeText={(shipment_id) => this.setState({shipment_id})} />
               <ColoredRaisedButton />
               {banner}
           </View>
@@ -222,7 +226,7 @@ class Tracking extends Component {
 
 var styles = StyleSheet.create({
   toolbar: { backgroundColor: '#0f303e', height: 56, },
-  feature: {flexDirection: 'row'},
+  feature: {flexDirection: 'row',paddingBottom:8,},
   bold: {fontWeight: 'bold',flex:0.7},
   label:{flex:0.3,},
 });
