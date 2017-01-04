@@ -73,7 +73,7 @@ class Tracking extends Component {
          'Content-Type': 'application/json'
      }};
 
-     fetch('http://nolan.nuvoex.com:80/api/shipment/track?awb[]='+this.state.shipment_id,obj)
+     fetch('http://nolan-stg.nuvoex.com/api/shipment/open-track?awb='+this.state.shipment_id,obj)
      .then((response) => response.json())
      .then((responseJson) => {
       console.log("request successful");
