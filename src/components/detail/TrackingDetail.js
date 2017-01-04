@@ -19,6 +19,7 @@ import Button from 'react-native-button';
 import * as Progress from 'react-native-progress';
 import styles from './styles';
 import * as GLOBAL from '../utils/Globals';
+import LabelItem from './LabelItem';
 
 const MK = require('react-native-material-kit');
 
@@ -116,35 +117,13 @@ export default class TrackingDetail extends Component {
                 <View>
                     <Card>
                         <View style={styles.ShipmentContainer}>
-                            <View style={styles.feature}>
-                                <Text style={styles.label}>Reached At</Text>
-                                <Text style={styles.bold}>{this.state.location}</Text>
-                            </View>
-                            <View style={styles.feature}>
-                                <Text style={styles.label}>Awb</Text>
-                                <Text style={styles.bold}>{this.state.awb}</Text>
-                            </View>
-                            <View style={styles.feature}>
-                                <Text style={styles.label}>Client</Text>
-                                <Text style={styles.bold}>{this.state.client_name}</Text>
-                            </View>
-                            <View style={styles.feature}>
-                                <Text style={styles.label}>Origin</Text>
-                                <Text style={styles.bold}>{this.state.origin_city}</Text>
-                            </View>
-                            <View style={styles.feature}>
-                                <Text style={styles.label}>Destination</Text>
-                                <Text style={styles.bold}>{this.state.destination_city}</Text>
-                            </View>
-
-                            <View style={styles.feature}>
-                                <Text style={styles.label}>Updated At</Text>
-                                <Text style={styles.bold}>{this.state.updated_at}</Text>
-                            </View>
-                            <View style={styles.feature}>
-                                <Text style={styles.label}>Description</Text>
-                                <Text style={styles.bold}>{this.state.description}</Text>
-                            </View>
+                            <LabelItem title={GLOBAL.STRINGS.REACHED_AT} detail={this.state.location}/>
+                            <LabelItem title={GLOBAL.STRINGS.AWB} detail={this.state.awb}/>
+                            <LabelItem title={GLOBAL.STRINGS.CLIENT} detail={this.state.client_name}/>
+                            <LabelItem title={GLOBAL.STRINGS.ORIGIN} detail={this.state.origin_city}/>
+                            <LabelItem title={GLOBAL.STRINGS.DESTINATION} detail={this.state.destination_city}/>
+                            <LabelItem title={GLOBAL.STRINGS.UPDATED_AT} detail={this.state.updated_at}/>
+                            <LabelItem title={GLOBAL.STRINGS.DESCRIPTION} detail={this.state.description}/>
                         </View>
                     </Card>
                     <Text style={styles.heading}>HISTORY</Text>
@@ -163,18 +142,9 @@ export default class TrackingDetail extends Component {
                                                 <View style={styles.line}/>
                                             </View>
                                             <View style={styles.shipmentDetailCol}>
-                                              <View style={styles.historyItem}>
-                                                <Text style={styles.label}>Description</Text>
-                                                <Text style={styles.bold}>{rowData.data.description}</Text>
-                                              </View>
-                                              <View style={styles.historyItem}>
-                                                <Text style={styles.label}>Location</Text>
-                                                <Text style={styles.bold}>{rowData.data.location}</Text>
-                                              </View>
-                                              <View style={styles.historyItem}>
-                                                <Text style={styles.label}>Updated At</Text>
-                                                <Text style={styles.bold}>{rowData.data.updated_at}</Text>
-                                              </View>
+                                                 <LabelItem title={GLOBAL.STRINGS.DESCRIPTION} detail={rowData.data.description}/>
+                                                 <LabelItem title={GLOBAL.STRINGS.LOCATION} detail={rowData.data.location}/>
+                                                 <LabelItem title={GLOBAL.STRINGS.UPDATED_AT} detail={rowData.data.updated_at}/>
                                             </View>
                                       </View>
                                     );
