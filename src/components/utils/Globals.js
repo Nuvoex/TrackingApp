@@ -5,7 +5,7 @@ module.exports = {
         WHITE: '#FFFFFF',
         GREEN: 'green',
         RED: '#FF0000',
-        PRIMARY: '#0F303E',
+        PRIMARY: '#144952',
         DIVIDER: '#EEEEEE'
     },
     STRINGS: {
