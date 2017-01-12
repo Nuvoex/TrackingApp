@@ -11,6 +11,10 @@ export default StyleSheet.create({
     center: {
         alignItems: 'center'
     },
+    labelRow:{
+        flexDirection: 'row',
+        paddingBottom: 8,
+    },
     toolbar: {
         backgroundColor: GLOBAL.COLOR.PRIMARY,
         height: GLOBAL.SIZE.TOOLBAR_HT
@@ -32,22 +36,11 @@ export default StyleSheet.create({
         paddingLeft: 8,
         paddingBottom: 12
     },
-    feature: {
-        flexDirection: 'row',
-        paddingBottom: 8,
-    },
-    historyItem: {
-        flexDirection: 'row',
-        paddingBottom: 4,
-    },
     heading: {
         marginLeft: 8,
         marginTop: 10,
         fontSize: 12,
         fontWeight: '500'
-    },
-    bold: {
-        flex: 0.7
     },
     historyCard: {
         paddingTop: 8
@@ -55,6 +48,9 @@ export default StyleSheet.create({
     label: {
         flex: 0.3,
         fontWeight: 'bold'
+    },
+    detail: {
+        flex: 0.7
     },
     circle: {
         width: 10,
