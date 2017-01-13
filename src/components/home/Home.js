@@ -3,22 +3,28 @@
  */
 
 import React, {Component} from 'react';
-import {Text, View, Image, TextInput, LayoutAnimation} from 'react-native';
+import {Text, View, Image, TextInput, LayoutAnimation, ScrollView} from 'react-native';
 import {Card, Icon} from 'react-native-material-design';
 import styles from './styles';
 import Toolbar from '../common/Toolbar';
 import * as GLOBAL from '../utils/Globals'
+import HistoryRow from './HistoryRowItem';
+import LabelItem from '../detail/LabelItem'
 
 export default class Home extends Component {
 
-    state = {
-        isSearching: false
-    };
+    constructor(props) {
+        super(props);
+        this.state = {
+            isAnimation: false
+        };
+    }
 
+    //TODO: Animation handle
     handleFocus = () => {
         LayoutAnimation.easeInEaseOut();
         this.setState({
-            isSearching: true,
+            isAnimation: true,
         });
     };
 
@@ -29,7 +35,7 @@ export default class Home extends Component {
         };
 
         let positionStyle, cardStyle;
-        if (!this.state.isSearching) {
+        if (!this.state.isAnimation) {
             positionStyle = {
                 justifyContent: 'center'
             };
@@ -43,14 +49,15 @@ export default class Home extends Component {
             positionStyle = {
                 position: 'absolute',
                 top: 0,
-                left: 8,
-                right: 8,
-                justifyContent: 'flex-start',
+                left: 0,
+                right: 0,
+                padding: 8,
+                justifyContent: 'flex-start'
             };
             cardStyle = {
                 marginLeft: 0,
                 marginRight: 0,
-                marginTop: 24
+                marginTop: 18
             }
         }
 
@@ -67,7 +74,7 @@ export default class Home extends Component {
                            style={styles.nuvoexImg}/>
                     <Card style={[styles.searchCard, cardStyle]}>
                         <View style={styles.search}>
-                            <Icon name='search'/>
+                            <Icon name='search' size={GLOBAL.SIZE.ICON}/>
                         </View>
                         <TextInput
                             style={styles.searchEditText}
@@ -79,14 +86,37 @@ export default class Home extends Component {
                             onFocus={this.handleFocus}
                         />
                         <View style={styles.close}>
-                            <Icon name="close"/>
+                            <Icon name="close" size={GLOBAL.SIZE.ICON}/>
                         </View>
                     </Card>
                 </View>
 
-                <Card style={styles.historyCard}>
-                    <Text style={styles.historyTitle}>History</Text>
-                </Card>
+                <ScrollView style={styles.detailContainer}>
+                    <Card style={styles.statusCard}>
+                        <Text style={[styles.greenTitle, styles.statusTitle]}>Shipment Status</Text>
+                        <Text style={styles.status1}>
+                            Shipment received & being processed at the Bengaluru Hub Name
+                        </Text>
+                        <View style={styles.divider}/>
+                        <View style={styles.clientRow}>
+                            <Text style={styles.client}>Clues Network Pvt. Ltd</Text>
+                            <Text style={styles.timestamp}>11:01:38 | 30 Dec</Text>
+                        </View>
+                        <LabelItem title={GLOBAL.STRINGS.REACHED_AT} detail="Banglore"/>
+                        <LabelItem title={GLOBAL.STRINGS.ORIGIN} detail="Amritsar"/>
+                        <LabelItem title={GLOBAL.STRINGS.DESTINATION} detail="Delhi"/>
+                    </Card>
+                    <Card style={styles.historyCard}>
+                        <Text style={[styles.greenTitle, styles.historyTitle]}>History</Text>
+                        <HistoryRow/>
+                        <HistoryRow/>
+                        <HistoryRow/>
+                        <HistoryRow/>
+                        <HistoryRow/>
+                        <HistoryRow/>
+                    </Card>
+                </ScrollView>
+
             </View>
         )
     }

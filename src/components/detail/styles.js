@@ -11,10 +11,6 @@ export default StyleSheet.create({
     center: {
         alignItems: 'center'
     },
-    labelRow:{
-        flexDirection: 'row',
-        paddingBottom: 8,
-    },
     toolbar: {
         backgroundColor: GLOBAL.COLOR.PRIMARY,
         height: GLOBAL.SIZE.TOOLBAR_HT
@@ -44,13 +40,6 @@ export default StyleSheet.create({
     },
     historyCard: {
         paddingTop: 8
-    },
-    label: {
-        flex: 0.3,
-        fontWeight: 'bold'
-    },
-    detail: {
-        flex: 0.7
     },
     circle: {
         width: 10,
