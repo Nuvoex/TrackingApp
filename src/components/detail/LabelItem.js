@@ -4,7 +4,7 @@
 
 import React, {Component} from 'react';
 import {Text, View, StyleSheet} from 'react-native';
-import * as GLOBAL from '../utils/Globals';
+import * as GLOBAL from '../../utils/Globals';
 
 export default class LabelItem extends Component {
 

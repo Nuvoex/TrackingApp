@@ -2,7 +2,7 @@
  * Created by Khushi on 04/01/17.
  */
 import {StyleSheet} from 'react-native';
-import * as GLOBAL from '../utils/Globals';
+import * as GLOBAL from '../../utils/Globals';
 
 export default StyleSheet.create({
     container: {
