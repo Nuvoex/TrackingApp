@@ -10,7 +10,6 @@ const {Provider} = require('react-redux');
 const configureStore = require('./store/configureStore');
 
 import TrackingApp from './TrackingApp';
-import * as GLOBAL from './utils/Globals';
 
 function setup(): ReactClass<{}> {
     console.disableYellowBox = true;
@@ -29,11 +28,11 @@ function setup(): ReactClass<{}> {
             };
         }
 
-        render(){
-            if (this.state.isLoading){
+        render() {
+            if (this.state.isLoading) {
                 return null;
             }
-            return(
+            return (
                 <Provider store={this.state.store}>
                     <TrackingApp/>
                 </Provider>

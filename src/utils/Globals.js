@@ -6,7 +6,7 @@ module.exports = {
         GREEN: 'green',
         RED: '#FF0000',
         PRIMARY: '#144952',
-        DARK_PRIMARY:'rgba(0,0,0,0.20)',
+        DARK_PRIMARY:'#103A41',
         DIVIDER: 'rgba(0,0,0,0.12)',
         BLACK_37: 'rgba(0,0,0,0.37)',
         TRANSPARENT: 'transparent',
@@ -27,7 +27,8 @@ module.exports = {
         UPDATED_AT: 'Updated At',
         DESCRIPTION: 'Description',
         LOCATION: 'Location',
-        SEARCH: 'SEARCH'
+        SEARCH: 'SEARCH',
+        TRACKING_REQUEST_ERROR: 'Failed to get tracking details',
     },
     SIZE: {
         DEFAULT_MARGIN: 16,

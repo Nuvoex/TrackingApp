@@ -8,4 +8,5 @@ const {combineReducers} = require('redux');
 
 module.exports = combineReducers({
     //TODO: Add reducer list
+    HistoryListReducer: require('./HistoryReducer'),
 });
