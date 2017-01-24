@@ -18,7 +18,6 @@ export type Error = {
 
 export type State = {
     isFetching: boolean;
-    data: ?any;
     showError: ?Error;
     awb: ?number;
     client_name: ?string;
@@ -32,11 +31,10 @@ export type State = {
 
 const initialState = {
     isFetching: true,
-    data: null,
     shipment_id: ' ',
     client_name: ' ',
-    origin_city: 'hello ',
-    destination_city: ' ram',
+    origin_city: ' ',
+    destination_city: ' ',
     location: ' ',
     updated_at: ' ',
     description: ' ',
@@ -51,11 +49,21 @@ function historyList(state: State = initialState, action: Action): State {
     }
 
     if (action.type === FETCH_HISTORY_DETAIL_SUCCESS) {
-        return {
+        let {shipment_id, client_name, origin_city, destination_city, location, updated_at, description} = action.data;
+        console.log('HISTORY_DETAIL_SUCCESS action.data is ' + JSON.stringify(action.data));
+        let output = {
+            shipment_id,
+            client_name,
+            origin_city,
+            destination_city,
+            location,
+            updated_at,
+            description,
             isFetching: false,
-            data: action.shipmentList,
             showError: null,
         };
+        console.log('HISTORY_DETAIL_SUCCESS output is ' + JSON.stringify(output));
+        return output;
     }
 
     if (action.type === FETCH_HISTORY_DETAIL_FAILED) {
