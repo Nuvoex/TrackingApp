@@ -6,6 +6,7 @@ module.exports = {
         GREEN: 'green',
         RED: '#FF0000',
         PRIMARY: '#144952',
+        DARK_PRIMARY:'rgba(0,0,0,0.20)',
         DIVIDER: 'rgba(0,0,0,0.12)',
         BLACK_37: 'rgba(0,0,0,0.37)',
         TRANSPARENT: 'transparent',
@@ -40,6 +41,6 @@ module.exports = {
         CARD_MARGIN: 8
     },
     ICONS: {
-        NUVOEX: require('../../res/icons/nuvoex_logo.png')
+        NUVOEX: require('../res/icons/nuvoex_logo.png')
     }
 };

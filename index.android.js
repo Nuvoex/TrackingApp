@@ -1,8 +1,7 @@
 'use strict';
 
 import {AppRegistry} from 'react-native';
-import Tracking  from './src/components/detail/TrackingDetail';
-import Home  from './src/components/home/Home';
+import setup from './src/setup';
 var React = require('react');
 
-AppRegistry.registerComponent('infinity', () => Home);
+AppRegistry.registerComponent('infinity', () => setup);
