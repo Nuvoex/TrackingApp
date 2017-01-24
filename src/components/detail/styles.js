@@ -2,7 +2,7 @@
  * Created by Khushi on 04/01/17.
  */
 import {StyleSheet} from 'react-native';
-import * as GLOBAL from '../utils/Globals';
+import * as GLOBAL from '../../utils/Globals';
 
 export default StyleSheet.create({
     container: {
@@ -10,10 +10,6 @@ export default StyleSheet.create({
     },
     center: {
         alignItems: 'center'
-    },
-    labelRow:{
-        flexDirection: 'row',
-        paddingBottom: 8,
     },
     toolbar: {
         backgroundColor: GLOBAL.COLOR.PRIMARY,
@@ -44,13 +40,6 @@ export default StyleSheet.create({
     },
     historyCard: {
         paddingTop: 8
-    },
-    label: {
-        flex: 0.3,
-        fontWeight: 'bold'
-    },
-    detail: {
-        flex: 0.7
     },
     circle: {
         width: 10,

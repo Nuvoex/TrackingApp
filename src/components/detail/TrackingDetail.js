@@ -10,7 +10,7 @@ import {Card} from 'react-native-material-design';
 import Button from 'react-native-button';
 import * as Progress from 'react-native-progress';
 import styles from './styles';
-import * as GLOBAL from '../utils/Globals';
+import * as GLOBAL from '../../utils/Globals';
 import LabelItem from './LabelItem';
 
 const MK = require('react-native-material-kit');

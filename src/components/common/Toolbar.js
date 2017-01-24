@@ -8,7 +8,7 @@
 
 import React, {Component} from 'react';
 import {ToolbarAndroid, StyleSheet, View, Text} from 'react-native';
-import * as GLOBAL from '../utils/Globals';
+import * as GLOBAL from '../../utils/Globals';
 
 export type Layout = 'default';
 
@@ -94,7 +94,9 @@ const TOOLBAR_HEIGHT = 56;
 const styles = StyleSheet.create({
     toolbar: {
         backgroundColor: GLOBAL.COLOR.PRIMARY,
-        height: TOOLBAR_HEIGHT
+        height: TOOLBAR_HEIGHT,
+        zIndex: 1,
+        position: 'relative',
     }
 });
 export default Toolbar;
