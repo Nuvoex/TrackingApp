@@ -8,7 +8,7 @@
 
 import React, {Component} from 'react';
 import {ToolbarAndroid, StyleSheet, View, Text} from 'react-native';
-import * as GLOBAL from '../utils/Globals';
+import * as GLOBAL from '../../utils/Globals';
 
 export type Layout = 'default';
 

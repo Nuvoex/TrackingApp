@@ -40,6 +40,6 @@ module.exports = {
         CARD_MARGIN: 8
     },
     ICONS: {
-        NUVOEX: require('../../res/icons/nuvoex_logo.png')
+        NUVOEX: require('../res/icons/nuvoex_logo.png')
     }
 };

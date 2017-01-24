@@ -4,7 +4,7 @@
  */
 'use strict';
 
-import * as GLOBAL from '../utils/Globals';
+import * as GLOBAL from '../../utils/Globals';
 
 const ListView = require('ListView');
 const Dimensions = require('Dimensions');

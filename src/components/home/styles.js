@@ -3,7 +3,7 @@
  */
 
 import {StyleSheet} from 'react-native';
-import * as GLOBAL from '../utils/Globals';
+import * as GLOBAL from '../../utils/Globals';
 
 let titleTopMargin = GLOBAL.SIZE.DEFAULT_MARGIN;
 
