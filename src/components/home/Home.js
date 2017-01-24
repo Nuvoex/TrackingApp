@@ -7,7 +7,7 @@ import {Text, View, Image, TextInput, LayoutAnimation, ScrollView} from 'react-n
 import {Card, Icon} from 'react-native-material-design';
 import styles from './styles';
 import Toolbar from '../common/Toolbar';
-import * as GLOBAL from '../utils/Globals'
+import * as GLOBAL from '../../utils/Globals'
 import HistoryRow from './HistoryRowItem';
 import LabelItem from '../detail/LabelItem'
 

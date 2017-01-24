@@ -5,7 +5,7 @@
 import React, {Component} from 'react';
 import {Text, View, StyleSheet} from 'react-native';
 import {Icon} from 'react-native-material-design';
-import * as GLOBAL from '../utils/Globals';
+import * as GLOBAL from '../../utils/Globals';
 import LabelItem from '../detail/LabelItem';
 
 export default class HistoryRowItem extends Component {
