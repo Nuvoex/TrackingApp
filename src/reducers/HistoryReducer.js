@@ -31,7 +31,7 @@ export type State = {
 
 const initialState = {
     isFetching: true,
-    shipment_id: ' ',
+    shipment_id: '1000585 ',
     client_name: ' ',
     origin_city: ' ',
     destination_city: ' ',

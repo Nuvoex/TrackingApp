@@ -7,5 +7,5 @@
 const {combineReducers} = require('redux');
 
 module.exports = combineReducers({
-    HistoryReducer: require('./HistoryReducer'),
+    historyReducer: require('./HistoryReducer'),
 });
