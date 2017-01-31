@@ -29,7 +29,7 @@ export default  class Api {
         }).then((res) => {
             console.log('Response status inside dashboard ' + res.status);
             if (res.status === 200) {
-                return res.json[0];
+                return res.json;
             } else {
                 throw (apiError(SERVER_ERROR, res.status, res.json))
             }
@@ -40,7 +40,8 @@ export default  class Api {
             } else {
                 throw (apiError(NETWORK_ERROR, 0, error))
             }
-        })
+        });
+        console.log(getHistoryDetailData);
     }
 
     /**

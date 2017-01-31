@@ -9,5 +9,3 @@ const historyDetailAction = require('./historyDetail');
 module.exports={
     ...historyDetailAction
 };
-
-

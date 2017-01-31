@@ -31,7 +31,7 @@ export type State = {
 
 const initialState = {
     isFetching: true,
-    shipment_id: '1000585 ',
+    awb: 0,
     client_name: ' ',
     origin_city: ' ',
     destination_city: ' ',
@@ -49,10 +49,10 @@ function historyList(state: State = initialState, action: Action): State {
     }
 
     if (action.type === FETCH_HISTORY_DETAIL_SUCCESS) {
-        let {shipment_id, client_name, origin_city, destination_city, location, updated_at, description} = action.data;
+        let {awb, client_name, origin_city, destination_city, location, updated_at, description} = action.data;
         console.log('HISTORY_DETAIL_SUCCESS action.data is ' + JSON.stringify(action.data));
         let output = {
-            shipment_id,
+            awb,
             client_name,
             origin_city,
             destination_city,

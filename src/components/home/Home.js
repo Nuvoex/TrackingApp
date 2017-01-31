@@ -16,13 +16,18 @@ const {fetchHistoryData} = require('../../actions');
 const {connect} = require('react-redux');
 
 class Home extends Component {
-    filter: Urls.TRACK_SHIPMENT_URL;
+    filter: 10153465;
 
     constructor(props) {
         super(props);
         this.state = {
             isAnimation: false
         };
+        this.getHistoryData = this.getHistoryData.bind(this);
+    }
+
+    componentDidMount() {
+        this.getHistoryData();
     }
 
     getHistoryData() {
@@ -136,6 +141,8 @@ class Home extends Component {
                         </View>
                     </Card>
                 </View>
+
+                {detailView}
             </View>
         )
     }
