@@ -19,7 +19,7 @@ module.exports = {
             return BASE_STAGING_URL;
         }
     },
-    getHistoryListUrl(filter: number){
+    getHistoryListUrl(filter: string){
         return this.TRACK_SHIPMENT_URL + '?awb=' + filter;
     }
 }

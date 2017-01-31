@@ -27,6 +27,7 @@ function historySuccess(data: JSON):Action {
     return{
         type: FETCH_HISTORY_DETAIL_SUCCESS,
         data: {
+            awb: data[0].awb,
             client_name: data[0].client_name,
             origin_city: data[0].origin_city,
             destination_city: data[0].destination_city,
@@ -44,11 +45,11 @@ function historyFailure(error: ApiError):Action {
     }
 }
 
-function fetchHistoryData(): ThunkAction {
+function fetchHistoryData(filter: string): ThunkAction {
     return dispatch =>{
         console.log ('inside history detail');
         dispatch(historyRequest());
-        return ApiFactory().getHistoryDetailData().then(function (json) {
+        return ApiFactory().getHistoryDetailData(filter).then(function (json) {
             console.log('success ok tracking' +JSON.stringify(json));
             dispatch(historySuccess(json));
         }).catch((error)=>{

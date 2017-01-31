@@ -25,9 +25,9 @@ export default  class Api {
     async getHistoryDetailData(filter: string) {
         return await this._fetch({
             method: 'GET',
-            url: Urls.TRACK_SHIPMENT_URL(filter),
+            url: Urls.getHistoryListUrl(filter),
         }).then((res) => {
-            console.log('Response status inside dashboard ' + res.status);
+            console.log('Response status inside history detail ' + res.status);
             if (res.status === 200) {
                 return res.json;
             } else {

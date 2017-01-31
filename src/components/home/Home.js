@@ -16,14 +16,15 @@ const {fetchHistoryData} = require('../../actions');
 const {connect} = require('react-redux');
 
 class Home extends Component {
-    filter: 10153465;
 
     constructor(props) {
         super(props);
         this.state = {
-            isAnimation: false
+            isAnimation: false,
+            filter: '1153465'
         };
         this.getHistoryData = this.getHistoryData.bind(this);
+        console.log(this.getHistoryData);
     }
 
     componentDidMount() {
@@ -31,7 +32,7 @@ class Home extends Component {
     }
 
     getHistoryData() {
-        this.props.fetchHistoryData(this.filter)
+        this.props.fetchHistoryData(this.state.filter)
     }
 
     //TODO: Animation handle
@@ -163,7 +164,7 @@ function mapStateToProps(store) {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        fetchHistoryData: (filter: number) => {
+        fetchHistoryData: (filter: string) => {
             dispatch(fetchHistoryData(filter));
         }
     }
