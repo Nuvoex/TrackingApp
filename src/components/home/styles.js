@@ -10,7 +10,6 @@ let titleTopMargin = GLOBAL.SIZE.DEFAULT_MARGIN;
 export default StyleSheet.create({
     container: {
         flex: 1,
-        backgroundColor: GLOBAL.COLOR.APP_THEME
     },
     searchContainer: {
         flex: 1,

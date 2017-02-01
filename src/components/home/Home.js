@@ -7,10 +7,10 @@ import {Text, View, Image, TextInput, LayoutAnimation, ScrollView} from 'react-n
 import {Card, Icon} from 'react-native-material-design';
 import styles from './styles';
 import Toolbar from '../common/Toolbar';
-import * as Urls from '../../utils/Urls';
 import * as GLOBAL from '../../utils/Globals'
 import HistoryRow from './HistoryRowItem';
-import LabelItem from '../detail/LabelItem'
+import LabelItem from '../detail/LabelItem';
+import ShowProgressAndNetworkError from '../common/ShowProgressAndNetworkError';
 
 const {fetchHistoryData} = require('../../actions');
 const {connect} = require('react-redux');
@@ -21,18 +21,15 @@ class Home extends Component {
         super(props);
         this.state = {
             isAnimation: false,
-            filter: '1153465'
+            shipmentId: ' ',
         };
         this.getHistoryData = this.getHistoryData.bind(this);
         console.log(this.getHistoryData);
     }
 
-    componentDidMount() {
-        this.getHistoryData();
-    }
-
     getHistoryData() {
-        this.props.fetchHistoryData(this.state.filter)
+        // this.handleFocus();
+        this.props.fetchHistoryData(this.state.shipmentId)
     }
 
     //TODO: Animation handle
@@ -42,6 +39,43 @@ class Home extends Component {
             isAnimation: true,
         });
     };
+
+    renderContent() {
+        let shipmentDetailView = (
+            <Card style={styles.statusCard}>
+                <Text style={[styles.greenTitle, styles.statusTitle]}>Shipment Status</Text>
+                <Text style={styles.status1}>
+                    {this.props.description}
+                </Text>
+                <View style={styles.divider}/>
+                <View style={styles.clientRow}>
+                    <Text style={styles.client}>{this.props.client_name}</Text>
+                    <Text style={styles.timestamp}>{this.props.updated_at}</Text>
+                </View>
+                <LabelItem title={GLOBAL.STRINGS.REACHED_AT} detail={this.props.location}/>
+                <LabelItem title={GLOBAL.STRINGS.ORIGIN} detail={this.props.origin_city}/>
+                <LabelItem title={GLOBAL.STRINGS.DESTINATION} detail={this.props.destination_city}/>
+            </Card>
+        );
+
+        let historyDetailView = (
+            <Card style={styles.historyCard}>
+                <Text style={[styles.greenTitle, styles.historyTitle]}>History</Text>
+                <HistoryRow/>
+                <HistoryRow/>
+                <HistoryRow/>
+                <HistoryRow/>
+                <HistoryRow/>
+                <HistoryRow/>
+            </Card>
+        );
+        return (
+            <ScrollView style={styles.detailContainer}>
+                {shipmentDetailView}
+                {historyDetailView}
+            </ScrollView>
+        );
+    }
 
     render() {
         const logo = {
@@ -76,42 +110,6 @@ class Home extends Component {
             }
         }
 
-        let shipmentDetailView = (
-            <Card style={styles.statusCard}>
-                <Text style={[styles.greenTitle, styles.statusTitle]}>Shipment Status</Text>
-                <Text style={styles.status1}>
-                    {this.props.description}
-                </Text>
-                <View style={styles.divider}/>
-                <View style={styles.clientRow}>
-                    <Text style={styles.client}>{this.props.client_name}</Text>
-                    <Text style={styles.timestamp}>{this.props.updated_at}</Text>
-                </View>
-                <LabelItem title={GLOBAL.STRINGS.REACHED_AT} detail={this.props.location}/>
-                <LabelItem title={GLOBAL.STRINGS.ORIGIN} detail={this.props.origin_city}/>
-                <LabelItem title={GLOBAL.STRINGS.DESTINATION} detail={this.props.destination_city}/>
-            </Card>
-        );
-
-        let historyDetailView = (
-            <Card style={styles.historyCard}>
-                <Text style={[styles.greenTitle, styles.historyTitle]}>History</Text>
-                <HistoryRow/>
-                <HistoryRow/>
-                <HistoryRow/>
-                <HistoryRow/>
-                <HistoryRow/>
-                <HistoryRow/>
-            </Card>
-        );
-
-        let detailView = (
-            <ScrollView style={styles.detailContainer}>
-                {shipmentDetailView}
-                {/*{historyDetailView}*/}
-            </ScrollView>
-        );
-
         return (
             <View style={styles.container}>
 
@@ -134,8 +132,9 @@ class Home extends Component {
                             placeholderTextColor={GLOBAL.COLOR.BLACK_37}
                             keyboardType='numeric'
                             underlineColorAndroid={GLOBAL.COLOR.TRANSPARENT}
-                            onFocus={this.handleFocus}
-                            onChangeText={(shipment_id) => this.setState({shipment_id})}
+                            onChangeText={(shipmentId) => this.setState({shipmentId})}
+                            value={this.state.shipmentId}
+                            onSubmitEditing={()=> this.getHistoryData()}
                         />
                         <View style={styles.close}>
                             <Icon name="close" size={GLOBAL.SIZE.ICON}/>
@@ -143,7 +142,13 @@ class Home extends Component {
                     </Card>
                 </View>
 
-                {detailView}
+                <ShowProgressAndNetworkError
+                    showLoading={this.props.isFetching}
+                    showError={this.props.showError}
+                    onRetry={this.getHistoryData}>
+                    {this.renderContent()}
+                </ShowProgressAndNetworkError>
+
             </View>
         )
     }
