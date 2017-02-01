@@ -14,22 +14,48 @@ import ShowProgressAndNetworkError from '../common/ShowProgressAndNetworkError';
 
 const {fetchHistoryData} = require('../../actions');
 const {connect} = require('react-redux');
+const PureListView = require('../common/PureListView');
+
+const LIST_VIEW = 'historyDetailView';
+
+type History = any;
+
+type Props ={
+    history: Array<History>;
+}
+
+type State = {
+    isAnimation: Boolean;
+    shipmentId: String;
+    showHistory: Boolean;
+}
 
 class Home extends Component {
+    props: Props;
+    state: State;
 
     constructor(props) {
         super(props);
         this.state = {
             isAnimation: false,
+            showHistory: false,
             shipmentId: ' ',
         };
         this.getHistoryData = this.getHistoryData.bind(this);
-        console.log(this.getHistoryData);
+        this.renderRow = this.renderRow.bind(this);
     }
 
     getHistoryData() {
         // this.handleFocus();
         this.props.fetchHistoryData(this.state.shipmentId)
+    }
+
+    componentWillReceiveProps(nextProps: Props) {
+        if (nextProps.history && (this.props.history !== nextProps.history)) {
+            this.setState({
+                showHistory: (nextProps.history.length > 0)
+            });
+        }
     }
 
     //TODO: Animation handle
@@ -40,8 +66,16 @@ class Home extends Component {
         });
     };
 
+    renderRow(data: History) {
+        return (
+            <HistoryRow
+                history={data}/>
+        )
+    }
+
     renderContent() {
-        let shipmentDetailView = (
+        let shipmentDetailView, historyDetailView;
+        shipmentDetailView = (
             <Card style={styles.statusCard}>
                 <Text style={[styles.greenTitle, styles.statusTitle]}>Shipment Status</Text>
                 <Text style={styles.status1}>
@@ -58,17 +92,22 @@ class Home extends Component {
             </Card>
         );
 
-        let historyDetailView = (
-            <Card style={styles.historyCard}>
-                <Text style={[styles.greenTitle, styles.historyTitle]}>History</Text>
-                <HistoryRow/>
-                <HistoryRow/>
-                <HistoryRow/>
-                <HistoryRow/>
-                <HistoryRow/>
-                <HistoryRow/>
-            </Card>
-        );
+        let listData = this.props.history;
+        console.log('List data' + listData);
+
+        if (this.state.showHistory) {
+            historyDetailView = (
+                <Card style={styles.historyCard}>
+                    <Text style={[styles.greenTitle, styles.historyTitle]}>History</Text>
+                    <PureListView
+                        ref={LIST_VIEW}
+                        data={listData}
+                        renderRow={this.renderRow}/>
+                </Card>
+            );
+            console.log("history detail" + historyDetailView)
+        }
+
         return (
             <ScrollView style={styles.detailContainer}>
                 {shipmentDetailView}
@@ -164,6 +203,7 @@ function mapStateToProps(store) {
         location: store.historyReducer.location,
         updated_at: store.historyReducer.updated_at,
         description: store.historyReducer.description,
+        history: store.historyReducer.history
     }
 }
 
