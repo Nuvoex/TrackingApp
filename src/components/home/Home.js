@@ -93,7 +93,6 @@ class Home extends Component {
         );
 
         let listData = this.props.history;
-        console.log('List data' + listData);
 
         if (this.state.showHistory) {
             historyDetailView = (
@@ -105,7 +104,6 @@ class Home extends Component {
                         renderRow={this.renderRow}/>
                 </Card>
             );
-            console.log("history detail" + historyDetailView)
         }
 
         return (
