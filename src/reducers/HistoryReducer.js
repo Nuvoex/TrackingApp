@@ -26,6 +26,7 @@ export type State = {
     location: ?string;
     updated_at: ?string;
     description: ?string;
+    history: ?any;
 
 };
 
@@ -38,6 +39,7 @@ const initialState = {
     location: ' ',
     updated_at: ' ',
     description: ' ',
+    history: null,
     showError: null,
 
 };
@@ -49,7 +51,7 @@ function historyList(state: State = initialState, action: Action): State {
     }
 
     if (action.type === FETCH_HISTORY_DETAIL_SUCCESS) {
-        let {awb, client_name, origin_city, destination_city, location, updated_at, description} = action.data;
+        let {awb, client_name, origin_city, destination_city, location, updated_at, description, history} = action.data;
         console.log('HISTORY_DETAIL_SUCCESS action.data is ' + JSON.stringify(action.data));
         let output = {
             awb,
@@ -59,6 +61,7 @@ function historyList(state: State = initialState, action: Action): State {
             location,
             updated_at,
             description,
+            history,
             isFetching: false,
             showError: null,
         };
