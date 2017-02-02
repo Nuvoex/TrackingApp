@@ -6,6 +6,7 @@ import React, {Component} from 'react';
 import {View, StyleSheet, ActivityIndicator, Dimensions} from 'react-native';
 import * as GLOBAL from '../../utils/Globals';
 import NetworkError from './NetworkError';
+import InvalidShipment from './InvalidShipment';
 
 const {height, width} = Dimensions.get('window');
 
@@ -58,8 +59,7 @@ class ShowProgressAndNetworkError extends Component {
             }
             else {
                 content = (
-                    <NetworkError
-                        onPress={this.props.onRetry}
+                    <InvalidShipment
                         errorTitle={this.props.showError.message}/>
                 )
             }

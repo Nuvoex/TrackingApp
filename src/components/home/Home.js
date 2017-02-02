@@ -3,7 +3,7 @@
  */
 
 import React, {Component} from 'react';
-import {Text, View, Image, TextInput, LayoutAnimation, ScrollView} from 'react-native';
+import {Text, View, Image, TextInput, LayoutAnimation, ScrollView, TouchableNativeFeedback} from 'react-native';
 import {Card, Icon} from 'react-native-material-design';
 import styles from './styles';
 import Toolbar from '../common/Toolbar';
@@ -28,6 +28,7 @@ type State = {
     isAnimation: Boolean;
     shipmentId: String;
     showHistory: Boolean;
+    showCross: Boolean;
 }
 
 class Home extends Component {
@@ -39,10 +40,12 @@ class Home extends Component {
         this.state = {
             isAnimation: false,
             showHistory: false,
+            showCross: false,
             shipmentId: ' ',
         };
         this.getHistoryData = this.getHistoryData.bind(this);
         this.renderRow = this.renderRow.bind(this);
+        this.clearText = this.clearText.bind(this);
     }
 
     getHistoryData() {
@@ -57,6 +60,13 @@ class Home extends Component {
             });
         }
     }
+
+    clearText() {
+        this.setState({
+            shipmentId: ' '
+        });
+    }
+
 
     //TODO: Animation handle
     handleFocus = () => {
@@ -114,13 +124,32 @@ class Home extends Component {
         );
     }
 
+
     render() {
         const logo = {
             title: 'nuvoex',
             icon: GLOBAL.ICONS.NUVOEX
         };
 
-        let positionStyle, cardStyle;
+        let positionStyle, cardStyle, showCrossView;
+
+        let shipmentLength = this.state.shipmentId.length;
+        if (shipmentLength > 1) {
+            showCrossView = (
+                <TouchableNativeFeedback onPress={this.clearText}
+                                         background={TouchableNativeFeedback.SelectableBackground()}>
+                    <View style={styles.close}>
+                        <Icon name="close" size={GLOBAL.SIZE.ICON}/>
+                    </View>
+                </TouchableNativeFeedback>
+            )
+        }
+        else {
+            showCrossView = (
+                <View style={styles.close}/>
+            )
+        }
+
         if (!this.state.isAnimation) {
             positionStyle = {
                 justifyContent: 'center'
@@ -173,9 +202,7 @@ class Home extends Component {
                             value={this.state.shipmentId}
                             onSubmitEditing={()=> this.getHistoryData()}
                         />
-                        <View style={styles.close}>
-                            <Icon name="close" size={GLOBAL.SIZE.ICON}/>
-                        </View>
+                        {showCrossView}
                     </Card>
                 </View>
 

@@ -33,6 +33,8 @@ module.exports = {
         NETWORK_ERROR_TITLE: 'Slow or no internet connection',
         NETWORK_ERROR_MESSAGE: 'Please wait & try again after a moment',
         TRACKING_REQUEST_ERROR: 'Failed to get tracking details',
+        INVALID_SHIPMENT: 'NuvoEx does not recognize any \n shipment with that Tracking Number',
+        NOT_FOUND: 'Shipment Not Found!'
     },
     SIZE: {
         DEFAULT_MARGIN: 16,
