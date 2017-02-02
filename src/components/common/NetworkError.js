@@ -13,7 +13,7 @@ import {
 import {Icon} from 'react-native-material-design';
 import * as GLOBAL from '../../utils/Globals';
 
-class NetworkErrorComponent extends Component {
+class NetworkError extends Component {
 
     static get defaultProps() {
         return {
@@ -72,4 +72,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default NetworkErrorComponent;
+export default NetworkError;
