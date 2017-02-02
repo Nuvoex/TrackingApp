@@ -41,7 +41,7 @@ class Home extends Component {
             isAnimation: false,
             showHistory: false,
             showCross: false,
-            shipmentId: ' ',
+            shipmentId: '',
         };
         this.getHistoryData = this.getHistoryData.bind(this);
         this.renderRow = this.renderRow.bind(this);
@@ -63,7 +63,7 @@ class Home extends Component {
 
     clearText() {
         this.setState({
-            shipmentId: ' '
+            shipmentId: ''
         });
     }
 
@@ -131,10 +131,10 @@ class Home extends Component {
             icon: GLOBAL.ICONS.NUVOEX
         };
 
-        let positionStyle, cardStyle, showCrossView;
+        let positionStyle, cardStyle, showCrossView, detailView;
 
         let shipmentLength = this.state.shipmentId.length;
-        if (shipmentLength > 1) {
+        if (shipmentLength > 0) {
             showCrossView = (
                 <TouchableNativeFeedback onPress={this.clearText}
                                          background={TouchableNativeFeedback.SelectableBackground()}>
@@ -149,6 +149,15 @@ class Home extends Component {
                 <View style={styles.close}/>
             )
         }
+
+        detailView = (
+            <ShowProgressAndNetworkError
+                showLoading={this.props.isFetching}
+                showError={this.props.showError}
+                onRetry={this.getHistoryData}>
+                {this.renderContent()}
+            </ShowProgressAndNetworkError>
+        );
 
         if (!this.state.isAnimation) {
             positionStyle = {
@@ -205,14 +214,7 @@ class Home extends Component {
                         {showCrossView}
                     </Card>
                 </View>
-
-                <ShowProgressAndNetworkError
-                    showLoading={this.props.isFetching}
-                    showError={this.props.showError}
-                    onRetry={this.getHistoryData}>
-                    {this.renderContent()}
-                </ShowProgressAndNetworkError>
-
+                {detailView}
             </View>
         )
     }
