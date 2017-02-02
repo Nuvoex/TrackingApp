@@ -34,6 +34,7 @@ function historySuccess(data: JSON):Action {
             location: data[0].location,
             updated_at: data[0].updated_at,
             description: data[0].description,
+            history: data[0].history
         }
     }
 }

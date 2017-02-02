@@ -8,7 +8,17 @@ import {Icon} from 'react-native-material-design';
 import * as GLOBAL from '../../utils/Globals';
 import LabelItem from '../detail/LabelItem';
 
+type Props={
+    history: any;
+}
+
 export default class HistoryRowItem extends Component {
+    props: Props;
+
+    constructor(props) {
+        super(props);
+    }
+
     render() {
         return (
             <View style={styles.historyContainer}>
@@ -16,9 +26,9 @@ export default class HistoryRowItem extends Component {
                     <View style={styles.circle}/>
                 </View>
                 <View style={styles.shipmentDetailCol}>
-                    <LabelItem title={GLOBAL.STRINGS.LOCATION} detail="Banglore"/>
-                    <LabelItem title={GLOBAL.STRINGS.UPDATED_AT} detail="18:38:52 | 29Dec"/>
-                    <Text>Shipment received & being processed at hub Bengaluru_Hub_Name</Text>
+                    <LabelItem title={GLOBAL.STRINGS.LOCATION} detail={this.props.history.location}/>
+                    <LabelItem title={GLOBAL.STRINGS.UPDATED_AT} detail={this.props.history.updated_at}/>
+                    <Text>{this.props.history.description}</Text>
                     <View style={styles.divider}/>
                 </View>
             </View>
