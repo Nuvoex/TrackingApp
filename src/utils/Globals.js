@@ -6,6 +6,8 @@ module.exports = {
         GREEN: 'green',
         RED: '#FF0000',
         PRIMARY: '#144952',
+        DARK_PRIMARY:'#103A41',
+        ACCENT: '#38AB57',
         DIVIDER: 'rgba(0,0,0,0.12)',
         BLACK_37: 'rgba(0,0,0,0.37)',
         TRANSPARENT: 'transparent',
@@ -13,7 +15,8 @@ module.exports = {
         BLACK_54: 'rgba(0,0,0,0.54)',
         BLACK_87: 'rgba(0,0,0,0.87)',
         SEARCH_CARD: '#FAFAFA',
-        APP_THEME: '#F1F3F4'
+        APP_THEME: '#F1F3F4',
+        LOADER_TRANSPARENT_BACKGROUND: 'rgba(0, 0, 0, 0.6)'
     },
     STRINGS: {
         TRACK_SHIPMENT: 'Track Shipment',
@@ -26,7 +29,10 @@ module.exports = {
         UPDATED_AT: 'Updated At',
         DESCRIPTION: 'Description',
         LOCATION: 'Location',
-        SEARCH: 'SEARCH'
+        SEARCH: 'SEARCH',
+        NETWORK_ERROR_TITLE: 'Slow or no internet connection',
+        NETWORK_ERROR_MESSAGE: 'Please wait & try again after a moment',
+        TRACKING_REQUEST_ERROR: 'Failed to get tracking details',
     },
     SIZE: {
         DEFAULT_MARGIN: 16,

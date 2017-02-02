@@ -9,8 +9,10 @@ import com.facebook.react.ReactInstanceManager;
 import com.facebook.react.ReactNativeHost;
 import com.facebook.react.ReactPackage;
 import com.facebook.react.shell.MainReactPackage;
+import com.xgfe.reactnativeenv.RCTNativeEnvPackage;
 
 import java.util.Arrays;
+import java.util.HashMap;
 import java.util.List;
 
 public class MainApplication extends Application implements ReactApplication {
@@ -23,10 +25,14 @@ public class MainApplication extends Application implements ReactApplication {
 
     @Override
     protected List<ReactPackage> getPackages() {
-      return Arrays.<ReactPackage>asList(
+        HashMap<String, Object> envs = new HashMap();
+        envs.put("IS_PROD", BuildConfig.IS_PROD);
+
+        return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new ReactMaterialKitPackage()
-      );
+            new ReactMaterialKitPackage(),
+            new RCTNativeEnvPackage(BuildConfig.class, envs)
+        );
     }
   };
 

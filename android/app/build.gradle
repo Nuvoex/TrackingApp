@@ -104,12 +104,34 @@ android {
             include "armeabi-v7a", "x86"
         }
     }
+    signingConfigs {
+        signed {
+            storePassword = "nuvoex"
+            keyAlias = "nuvoex"
+            keyPassword = "nuvoex"
+            storeFile file("../nuvoex.jks")
+        }
+    }
     buildTypes {
         release {
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
+            signingConfig signingConfigs.signed
         }
     }
+
+    productFlavors {
+            prod {
+                applicationId "com.nuvoex.infinity"
+                buildConfigField "boolean", "IS_PROD", "true"
+            }
+
+            staging {
+                applicationId "com.nuvoex.infinity.staging"
+                buildConfigField "boolean", "IS_PROD", "false"
+            }
+        }
+
     // applicationVariants are e.g. debug, release
     applicationVariants.all { variant ->
         variant.outputs.each { output ->
@@ -127,6 +149,7 @@ android {
 
 dependencies {
     compile project(':react-native-material-kit')
+    compile project(':react-native-native-env')
     compile fileTree(dir: "libs", include: ["*.jar"])
     compile "com.android.support:appcompat-v7:23.0.1"
     compile "com.facebook.react:react-native:+"  // From node_modules
