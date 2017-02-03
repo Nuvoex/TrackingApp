@@ -45,7 +45,8 @@ module.exports = {
         DIVIDER_HT: 2,
         ICON: 24,
         SMALL_TEXT: 12,
-        CARD_MARGIN: 8
+        CARD_MARGIN: 8,
+        INVALID_MARGIN_TOP: 54
     },
     ICONS: {
         NUVOEX: require('../res/icons/nuvoex_logo.png')

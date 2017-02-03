@@ -3,7 +3,11 @@
  */
 
 import React, {Component} from 'react';
-import {Text, View, Image, TextInput, LayoutAnimation, ScrollView, TouchableNativeFeedback} from 'react-native';
+import {
+    Text, View, Image,
+    TextInput, LayoutAnimation, ScrollView,
+    TouchableNativeFeedback, Platform, UIManager,
+} from 'react-native';
 import {Card, Icon} from 'react-native-material-design';
 import styles from './styles';
 import Toolbar from '../common/Toolbar';
@@ -29,7 +33,24 @@ type State = {
     shipmentId: String;
     showHistory: Boolean;
     showCross: Boolean;
+    detailView: Boolean;
 }
+
+const animation = {
+    layout: {
+        easeInEaseOut: {
+            duration: 500,
+            create: {
+                type: LayoutAnimation.Types.easeInEaseOut,
+                property: LayoutAnimation.Properties.scaleXY,
+            },
+            update: {
+                delay: 0,
+                type: LayoutAnimation.Types.easeInEaseOut,
+            },
+        },
+    }
+};
 
 class Home extends Component {
     props: Props;
@@ -42,14 +63,21 @@ class Home extends Component {
             showHistory: false,
             showCross: false,
             shipmentId: '',
+            detailView: false,
         };
         this.getHistoryData = this.getHistoryData.bind(this);
         this.renderRow = this.renderRow.bind(this);
         this.clearText = this.clearText.bind(this);
+        this.handleFocus = this.handleFocus.bind(this);
+
+        // Enable LayoutAnimation under Android
+        if (Platform.OS === 'android') {
+            UIManager.setLayoutAnimationEnabledExperimental(true);
+        }
     }
 
     getHistoryData() {
-        // this.handleFocus();
+        this.handleFocus();
         this.props.fetchHistoryData(this.state.shipmentId)
     }
 
@@ -67,12 +95,12 @@ class Home extends Component {
         });
     }
 
-
-    //TODO: Animation handle
     handleFocus = () => {
-        LayoutAnimation.easeInEaseOut();
+        console.log('Starting Animation');
+        LayoutAnimation.configureNext(animation.layout.easeInEaseOut);
         this.setState({
             isAnimation: true,
+            detailView: true
         });
     };
 
@@ -150,14 +178,16 @@ class Home extends Component {
             )
         }
 
-        detailView = (
-            <ShowProgressAndNetworkError
-                showLoading={this.props.isFetching}
-                showError={this.props.showError}
-                onRetry={this.getHistoryData}>
-                {this.renderContent()}
-            </ShowProgressAndNetworkError>
-        );
+        if(this.state.detailView) {
+            detailView = (
+                <ShowProgressAndNetworkError
+                    showLoading={this.props.isFetching}
+                    showError={this.props.showError}
+                    onRetry={this.getHistoryData}>
+                    {this.renderContent()}
+                </ShowProgressAndNetworkError>
+            );
+        }
 
         if (!this.state.isAnimation) {
             positionStyle = {
@@ -176,7 +206,6 @@ class Home extends Component {
                 left: 0,
                 right: 0,
                 padding: 8,
-                justifyContent: 'flex-start'
             };
             cardStyle = {
                 marginLeft: 0,

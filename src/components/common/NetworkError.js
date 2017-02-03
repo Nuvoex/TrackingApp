@@ -30,7 +30,7 @@ class NetworkError extends Component {
                     <TouchableNativeFeedback
                         onPress={this.props.onPress}>
                         <View style={styles.refreshContainer}>
-                            <Icon name="refresh" color={GLOBAL.COLOR.WHITE} onPress={this.props.onPress}/>
+                            <Icon name="refresh" color={GLOBAL.COLOR.APP_THEME} onPress={this.props.onPress}/>
                         </View>
                     </TouchableNativeFeedback>
                 </View>
@@ -43,9 +43,13 @@ const refreshSize = 40;
 
 const styles = StyleSheet.create({
     parent: {
-        flex: 1,
+        position: 'absolute',
+        top: GLOBAL.SIZE.INVALID_MARGIN_TOP,
+        bottom:0,
+        left:0,
+        right:0,
         alignItems: 'center',
-        justifyContent: 'center',
+        justifyContent: 'center'
     },
     container: {
         alignItems: 'center',

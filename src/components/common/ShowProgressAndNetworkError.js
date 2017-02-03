@@ -21,9 +21,15 @@ const styles = StyleSheet.create({
         left: 0,
         elevation: 3
     },
+    center:{
+        position: 'absolute',
+        top:0,
+        bottom:0
+    },
     parent: {
         flex: 1,
-        backgroundColor: GLOBAL.COLOR.APP_THEME
+        backgroundColor: GLOBAL.COLOR.APP_THEME,
+        zIndex: -1
     }
 });
 
