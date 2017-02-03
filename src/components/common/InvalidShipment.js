@@ -24,7 +24,11 @@ class InvalidShipment extends Component {
 
 const styles = StyleSheet.create({
     parent: {
-        flex: 1,
+        position: 'absolute',
+        top: GLOBAL.SIZE.INVALID_MARGIN_TOP,
+        bottom:0,
+        left:0,
+        right:0,
         alignItems: 'center',
         justifyContent: 'center',
     },
