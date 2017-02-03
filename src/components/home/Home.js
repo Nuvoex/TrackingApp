@@ -12,8 +12,8 @@ import {Card, Icon} from 'react-native-material-design';
 import styles from './styles';
 import Toolbar from '../common/Toolbar';
 import * as GLOBAL from '../../utils/Globals'
-import HistoryRow from './HistoryRowItem';
-import LabelItem from '../detail/LabelItem';
+import HistoryRow from '../shipmentDetail/HistoryRowItem';
+import LabelItem from '../shipmentDetail/LabelItem';
 import ShowProgressAndNetworkError from '../common/ShowProgressAndNetworkError';
 
 const {fetchHistoryData} = require('../../actions');

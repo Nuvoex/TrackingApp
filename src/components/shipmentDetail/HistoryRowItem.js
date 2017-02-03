@@ -4,9 +4,8 @@
 
 import React, {Component} from 'react';
 import {Text, View, StyleSheet} from 'react-native';
-import {Icon} from 'react-native-material-design';
 import * as GLOBAL from '../../utils/Globals';
-import LabelItem from '../detail/LabelItem';
+import LabelItem from './LabelItem';
 
 type Props={
     history: any;
