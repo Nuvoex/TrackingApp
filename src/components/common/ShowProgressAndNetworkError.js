@@ -6,7 +6,7 @@ import React, {Component} from 'react';
 import {View, StyleSheet, ActivityIndicator, Dimensions} from 'react-native';
 import * as GLOBAL from '../../utils/Globals';
 import NetworkError from './NetworkError';
-import InvalidShipment from './InvalidShipment';
+import InvalidShipment from '../shipmentDetail/InvalidShipment';
 
 const {height, width} = Dimensions.get('window');
 
