@@ -1,4 +1,4 @@
-package com.infinity;
+package com.tracking;
 
 import com.facebook.react.ReactActivity;
 
@@ -10,6 +10,6 @@ public class MainActivity extends ReactActivity {
      */
     @Override
     protected String getMainComponentName() {
-        return "infinity";
+        return "tracking";
     }
 }

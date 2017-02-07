@@ -3,4 +3,4 @@
 import {AppRegistry} from 'react-native';
 import setup  from './src/setup';
 
-AppRegistry.registerComponent('infinity', setup);
+AppRegistry.registerComponent('tracking', setup);

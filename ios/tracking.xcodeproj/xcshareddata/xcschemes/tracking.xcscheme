@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-               BuildableName = "infinity.app"
-               BlueprintName = "infinity"
-               ReferencedContainer = "container:infinity.xcodeproj">
+               BuildableName = "tracking.app"
+               BlueprintName = "tracking"
+               ReferencedContainer = "container:tracking.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
          <BuildActionEntry
@@ -29,9 +29,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "infinityTests.xctest"
-               BlueprintName = "infinityTests"
-               ReferencedContainer = "container:infinity.xcodeproj">
+               BuildableName = "trackingTests.xctest"
+               BlueprintName = "trackingTests"
+               ReferencedContainer = "container:tracking.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,9 +47,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "00E356ED1AD99517003FC87E"
-               BuildableName = "infinityTests.xctest"
-               BlueprintName = "infinityTests"
-               ReferencedContainer = "container:infinity.xcodeproj">
+               BuildableName = "trackingTests.xctest"
+               BlueprintName = "trackingTests"
+               ReferencedContainer = "container:tracking.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -57,9 +57,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "infinity.app"
-            BlueprintName = "infinity"
-            ReferencedContainer = "container:infinity.xcodeproj">
+            BuildableName = "tracking.app"
+            BlueprintName = "tracking"
+            ReferencedContainer = "container:tracking.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -77,9 +77,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "infinity.app"
-            BlueprintName = "infinity"
-            ReferencedContainer = "container:infinity.xcodeproj">
+            BuildableName = "tracking.app"
+            BlueprintName = "tracking"
+            ReferencedContainer = "container:tracking.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -96,9 +96,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "13B07F861A680F5B00A75B9A"
-            BuildableName = "infinity.app"
-            BlueprintName = "infinity"
-            ReferencedContainer = "container:infinity.xcodeproj">
+            BuildableName = "tracking.app"
+            BlueprintName = "tracking"
+            ReferencedContainer = "container:tracking.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
