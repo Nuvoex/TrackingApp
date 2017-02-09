@@ -4,7 +4,7 @@ Getting Start with react-native <br>
 https://facebook.github.io/react-native/docs/getting-started.html
 
 # Development Set Up
-Install Git, Brew
+Install Git and Brew then:
 * Install Node "brew install node"
 * Install Watchman for watching changes in the filesystem "brew install watchman"
 * Install Android-sdk "brew install android-sdk"
