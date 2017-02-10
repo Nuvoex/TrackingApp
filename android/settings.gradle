@@ -1,4 +1,4 @@
-rootProject.name = 'infinity'
+rootProject.name = 'tracking'
 
 include ':app'
 include ':react-native-native-env'
